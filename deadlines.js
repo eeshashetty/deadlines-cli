@@ -5,7 +5,7 @@ const fs = require('fs')
 const argv = require('yargs')
 	.usage('$0 [args]')
 	.option('show', { describe: 'show deadlines for Today(d) This Week(w) This Month(m) or All(a)'})
-	.option('add', { describe: 'add a new deadline. append with --title="" --date="" --subject=""') }
+	.option('add', { describe: 'add a new deadline. append with --title=a --date=date --subject=subj'})
 	.option('topic', { describe: 'filter deadlines by subject' })
 	.argv;
 
@@ -103,9 +103,10 @@ switch(choice) {
 
 function add(title, date, subject) {
 	let d = {}
+	let today = new Date()
 	d.title = title
 	date = new Date(date)
-	date.setYear('2020')
+	date.setYear(today.getYear())
 	d.date = date
 	d.subject = subject
 	data.push(d)
