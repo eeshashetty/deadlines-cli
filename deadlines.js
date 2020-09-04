@@ -53,8 +53,8 @@ switch(choice) {
 		let flag1 = 0;
 		console.log(chalk.bold("--- Deadlines For Today ---\n"))
 		data.forEach((d) => {
-			const dt = new Date(d.date);
-			if(dt === today)
+			const dt = new Date(d.date)
+			if(dt.getDate() === today.getDate() && dt.getMonth() === today.getMonth() && dt.getYear() === today.getYear())
 			{show(d); ++flag1;}
 		})	
 		if (flag1===0) 
